@@ -1,0 +1,7 @@
+.findContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  padding: 10px;
+}
