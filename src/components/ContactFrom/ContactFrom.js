@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Styles from './ContactFrom.module.css';
+import inputId from '../../services/helpers';
 
 export default class ContactFrom extends Component {
   state = { name: '', number: '' };
 
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    nameId: PropTypes.string.isRequired,
-    numberId: PropTypes.string.isRequired,
   };
 
   handleChange = e => {
@@ -24,27 +23,26 @@ export default class ContactFrom extends Component {
 
   render() {
     const { name, number } = this.state;
-    const { nameId, numberId } = this.props;
     return (
       <form className={Styles.addContact} onSubmit={this.reset}>
-        <label className={Styles.input} htmlFor={nameId}>
+        <label className={Styles.input} htmlFor={inputId.name}>
           Name
           <input
             type="text"
             value={name}
             onChange={this.handleChange}
-            id={nameId}
+            id={inputId.name}
             name="name"
             className={Styles.widthInput}
           />
         </label>
-        <label className={Styles.input} htmlFor={numberId}>
+        <label className={Styles.input} htmlFor={inputId.number}>
           Number
           <input
-            type="tel"
+            type="number"
             value={number}
             onChange={this.handleChange}
-            id={numberId}
+            id={inputId.number}
             name="number"
             className={Styles.widthInput}
           />

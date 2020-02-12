@@ -5,12 +5,6 @@ import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
 import Styles from './PhoneContact.module.css';
 
-const inputId = {
-  name: shortid.generate(),
-  number: shortid.generate(),
-  filter: shortid.generate(),
-};
-
 export default class PhoneContact extends Component {
   state = {
     contacts: [
@@ -58,10 +52,11 @@ export default class PhoneContact extends Component {
     }
   };
 
-  delete = e => {
+  deleteContact = e => {
     const { id } = e.target;
     const { contacts } = this.state;
-    this.setState({ contacts: contacts.filter(item => item.id !== id) });
+    const filter = contacts.filter(item => item.id !== id);
+    this.setState({ contacts: filter });
   };
 
   filterContacts = () => {
@@ -76,21 +71,16 @@ export default class PhoneContact extends Component {
     return (
       <div>
         <h3 className={Styles.allTitle}>Phonebook</h3>
-        <ContactForm
-          handleSubmit={this.handleSubmit}
-          nameId={inputId.name}
-          numberId={inputId.number}
-        />
+        <ContactForm handleSubmit={this.handleSubmit} />
         <h3 className={Styles.allTitle}>Contacts</h3>
         <Filter
           length={contacts.length}
           filter={filter}
-          filterId={inputId.filter}
           handleChange={this.handleChange}
         />
         <ContactList
           filterContacts={this.filterContacts}
-          onClickDelete={this.delete}
+          onClickDelete={this.deleteContact}
         />
       </div>
     );
