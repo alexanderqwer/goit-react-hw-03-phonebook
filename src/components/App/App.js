@@ -3,9 +3,9 @@ import shortid from 'shortid';
 import ContactForm from '../ContactFrom/ContactFrom';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
-import Styles from './PhoneContact.module.css';
+import Styles from './App.module.css';
 
-export default class PhoneContact extends Component {
+export default class App extends Component {
   state = {
     contacts: [
       // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
